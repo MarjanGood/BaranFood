@@ -1,7 +1,22 @@
-function MenuId(props) {
-    return ( 
-     <h3>Detail</h3>
+import {useRouter} from "next/router";
+import FoodDetailsPage from "../../components/templates/FoodDetailsPage"
+
+function MenuId({data}) {
+
+    console.log(data);
+    const router = useRouter();
+    
+    if(router.isFallback){
+     return <h2>Loading Page...</h2>
+    }
+
+     return (
+        <div>       
+            <FoodDetailsPage {...data}/>    
+        </div>
+      //
      );
+
 }
 export default MenuId;
 
@@ -21,14 +36,14 @@ export async function getStaticPaths(){
 
 export async function getStaticProps(context){
 
-    const { params:{menuId}  } = context;
+    const { params: {menuId} } = context;
 
    // console.log(menuId);
     const res = await fetch(`http://localhost:4000/data/${menuId}`);
     const data = await res.json();
-    console.log(menuId);
+   // console.log(data.id);
 
-    if(!data){
+    if(!data.id){
         return {
             notFound:true
         }
