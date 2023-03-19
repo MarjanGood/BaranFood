@@ -12,7 +12,8 @@ function MenuId({data}) {
 
      return (
         <div>       
-            <FoodDetailsPage {...data}/>    
+            <FoodDetailsPage {...data}/> 
+           
         </div>
       //
      );
@@ -39,7 +40,7 @@ export async function getStaticProps(context){
     const { params: {menuId} } = context;
 
    // console.log(menuId);
-    const res = await fetch(`http://localhost:4000/data/${menuId}`);
+    const res = await fetch(`${process.env.BASE_URL}/data/${menuId}`);
     const data = await res.json();
    // console.log(data.id);
 
@@ -51,6 +52,6 @@ export async function getStaticProps(context){
 
     return {
        props : { data },
-       revalidate: 10
+       revalidate:  +process.env.REVALIDATE
     }
 }
