@@ -9,7 +9,7 @@ function CategoriesPage({data}) {
  const [query, setQuery] = useState({difficulty:"", time:""});
 
  useEffect(()=>{
- console.log(router.query);
+ //console.log(router.query);
  const {difficulty,time} = router.query;
 if(query.difficulty !== difficulty || query.time!==time){
     setQuery({difficulty,time});
@@ -17,12 +17,12 @@ if(query.difficulty !== difficulty || query.time!==time){
  },[])
  
  const changeHandler = (e) => {
-    console.log(e)
+    //console.log(e)
     setQuery({...query , [e.target.name]: e.target.value});
  }
 
  const searchHandler=()=>{
-    console.log(query);
+    //console.log(query);
     router.push({pathname:"/categories", query});
  }
 
