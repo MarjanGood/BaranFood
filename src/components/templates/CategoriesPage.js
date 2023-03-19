@@ -4,6 +4,7 @@ import Card from "../modules/Card";
 import styles from "./CategoriesPage.module.css";
 
 function CategoriesPage() {
+    const router = useRouter();
 
  const [query, setQuery] = useState({difficulty:"", time:""});
 
