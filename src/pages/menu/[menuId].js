@@ -23,7 +23,7 @@ export default MenuId;
 
 export async function getStaticPaths(){
 
-    const res = await fetch("http://localhost:4000/data");
+    const res = await fetch(`${process.env.BASE_URL}/data`);
     const json = await res.json();
     const data = json.slice(0,10);
 
