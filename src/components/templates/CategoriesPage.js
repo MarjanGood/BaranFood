@@ -3,11 +3,19 @@ import { useEffect, useState } from "react";
 import Card from "../modules/Card";
 import styles from "./CategoriesPage.module.css";
 
-function CategoriesPage() {
+function CategoriesPage({data}) {
     const router = useRouter();
 
  const [query, setQuery] = useState({difficulty:"", time:""});
 
+ useEffect(()=>{
+ console.log(router.query);
+ const {difficulty,time} = router.query;
+if(query.difficulty !== difficulty || query.time!==time){
+    setQuery({difficulty,time});
+}
+ },[])
+ 
  const changeHandler = (e) => {
     console.log(e)
     setQuery({...query , [e.target.name]: e.target.value});
@@ -16,8 +24,8 @@ function CategoriesPage() {
  const searchHandler=()=>{
     console.log(query);
     router.push({pathname:"/categories", query});
-
  }
+
   return (
     <div className={styles.container}>
       <h2>Categories</h2>
@@ -43,10 +51,11 @@ function CategoriesPage() {
 
         </div>
 
-        {/* <div className={styles.cards}> 
+        <div className={styles.cards}> 
           {!data.length ? ( <img src="/images/search.png" alt="Category"/> ) : null}
           {data.map((food) => ( <Card key={food.id} {...food} /> ))}
-        </div> */}
+        </div> 
+
       </div>
     </div>
   );
