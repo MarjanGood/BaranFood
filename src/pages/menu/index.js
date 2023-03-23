@@ -1,4 +1,4 @@
-import MenuPage from "../../components/templates/menuPage";
+import MenuPage from "../../components/templates/MenuPage";
 
 function Menu({data}) {
     return ( <MenuPage data={data}></MenuPage> );
