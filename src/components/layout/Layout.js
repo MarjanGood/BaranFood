@@ -14,6 +14,7 @@ function Layout({ children }) {
         </div>
       </header>
       <div className={styles.container}>{children}</div>
+      
       <footer className={styles.footer}>
         <a href="https://botostart.ir" target="_blank" rel="noreferrer">
           Botostart
