@@ -1,3 +1,5 @@
+import { todos } from "../../data/todos";
+
 export default function handler(req,res){
-    res.status(200).json({name:"John from Index"});
+    res.status(200).json(todos);
 }
